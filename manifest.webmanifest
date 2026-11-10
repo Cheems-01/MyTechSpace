@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "MyTechSpace · 我的技术空间",
+  "short_name": "MyTechSpace",
+  "description": "记录 C 语言、嵌入式与网页开发学习过程的个人技术空间。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#162337",
+  "categories": ["education", "developer"],
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
