@@ -147,7 +147,11 @@ html[data-theme="dark"] .button-primary { color: #162337; }
 .section-heading-row { display: flex; align-items: end; justify-content: space-between; gap: 40px; max-width: none; }
 .section-heading-row .section-intro { max-width: 360px; margin: 0 0 5px; }
 .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.skill-card { min-height: 248px; padding: 22px 20px; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); transition: transform 180ms ease, box-shadow 180ms ease; }
+/* 整张卡片就是一个链接：block 撑满，::after 负责悬停时出现的箭头。 */
+.skill-card { position: relative; display: block; min-height: 248px; padding: 22px 20px; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); color: inherit; transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease; }
+.skill-card::after { position: absolute; right: 18px; bottom: 15px; color: var(--blue); font-size: 13px; font-weight: 700; content: "↗"; opacity: 0; transform: translate(-4px, 4px); transition: opacity 160ms ease, transform 160ms ease; }
+.skill-card:hover, .skill-card:focus-visible { border-color: color-mix(in srgb, var(--blue) 38%, var(--line)); }
+.skill-card:hover::after, .skill-card:focus-visible::after { opacity: 1; transform: translate(0, 0); }
 .skill-card:hover, .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .skill-featured { border-color: color-mix(in srgb, var(--blue) 26%, var(--line)); }
 .skill-top { display: flex; align-items: center; justify-content: space-between; }
