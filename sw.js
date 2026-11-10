@@ -1,5 +1,5 @@
 /* MyTechSpace 的离线缓存：装成应用之后断网也能打开。 */
-const CACHE = "mts-v1";
+const CACHE = "mts-v2";
 const ASSETS = [
   "./",
   "./index.html",
