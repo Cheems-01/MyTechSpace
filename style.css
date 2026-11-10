@@ -62,7 +62,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--blue); outline-
 .menu-toggle { display: none; }
 
 /* 首页 */
-.hero { position: relative; overflow: hidden; min-height: 650px; padding: 104px 0 35px; background: var(--page); }
+.hero { position: relative; overflow: hidden; min-height: 650px; padding: 104px 0 35px; background: linear-gradient(96deg, color-mix(in srgb, var(--page) 97%, transparent) 0%, color-mix(in srgb, var(--page) 88%, transparent) 40%, color-mix(in srgb, var(--page) 48%, transparent) 66%, color-mix(in srgb, var(--page) 14%, transparent) 100%), url("assets/cyrene.webp") 58% top / cover no-repeat, var(--page); }
+/* 深色模式下插画太亮，把遮罩抬高一档，只留一点点轮廓。 */
+html[data-theme="dark"] .hero { background: linear-gradient(96deg, color-mix(in srgb, var(--page) 97%, transparent) 0%, color-mix(in srgb, var(--page) 88%, transparent) 40%, color-mix(in srgb, var(--page) 70%, transparent) 68%, color-mix(in srgb, var(--page) 52%, transparent) 100%), url("assets/cyrene.webp") 58% top / cover no-repeat, var(--page); }
 .hero::before { position: absolute; top: 5%; right: -11%; width: 62vw; height: 56vw; border: 1px solid color-mix(in srgb, var(--blue) 9%, transparent); border-radius: 50%; content: ""; }
 .hero::after { position: absolute; top: 13%; right: -5%; width: 48vw; height: 43vw; border: 1px solid color-mix(in srgb, var(--blue) 8%, transparent); border-radius: 50%; content: ""; }
 .hero-layout { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 55px; }
@@ -86,6 +88,9 @@ html[data-theme="dark"] .button-primary { color: #162337; }
 .hero-focus > span:first-child { margin-right: 2px; }
 .focus-tag { padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font-size: 11px; }
 .hero-visual { position: relative; display: grid; min-height: 390px; place-items: center; }
+/* 全站背景插画：固定在视口，压到很淡，只当氛围（挂在 html 上，否则会被 body 背景盖住）。 */
+html::before { position: fixed; z-index: -1; inset: 0; background: url("assets/cyrene.webp") center 60% / min(1180px, 118%) auto no-repeat; content: ""; opacity: 1; pointer-events: none; }
+html[data-theme="dark"]::before { opacity: 0.09; }
 .orbit { position: absolute; border: 1px solid color-mix(in srgb, var(--blue) 15%, transparent); border-radius: 50%; transform: rotate(-24deg); }
 .orbit-one { width: 420px; height: 250px; }
 .orbit-two { width: 450px; height: 290px; transform: rotate(28deg); }
@@ -279,6 +284,8 @@ html[data-theme="dark"] .art-car { background: #44372a; }
 @media (max-width: 900px) {
   .hero-layout { gap: 30px; }
   .hero { min-height: 600px; padding-top: 76px; }
+  /* 窄屏改成单列，文字会压到插画上，干脆收回成纯色。 */
+  html .hero, html[data-theme="dark"] .hero { background: var(--page); }
   .hero-visual { min-height: 340px; }
   .orbit-one { width: 350px; height: 220px; }
   .orbit-two { width: 365px; height: 250px; }
