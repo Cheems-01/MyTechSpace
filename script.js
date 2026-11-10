@@ -27,21 +27,33 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-// 切换浅色和深色外观。
+// 切换浅色和深色外观，并把这次选择记在浏览器里。
 const themeToggle = document.querySelector("#themeToggle");
 const themeLabel = themeToggle.querySelector(".theme-label");
 const themeIcon = themeToggle.querySelector(".theme-icon");
+
+function syncThemeToggle(isDark) {
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute("aria-label", isDark ? "切换到浅色模式" : "切换到深色模式");
+  themeLabel.textContent = isDark ? "浅色" : "深色";
+  themeIcon.textContent = isDark ? "☀" : "☾";
+}
 
 themeToggle.addEventListener("click", function () {
   const isDark = document.documentElement.dataset.theme === "dark";
   const nextTheme = isDark ? "light" : "dark";
 
   document.documentElement.dataset.theme = nextTheme;
-  themeToggle.setAttribute("aria-pressed", String(!isDark));
-  themeToggle.setAttribute("aria-label", isDark ? "切换到深色模式" : "切换到浅色模式");
-  themeLabel.textContent = isDark ? "深色" : "浅色";
-  themeIcon.textContent = isDark ? "☾" : "☀";
+  syncThemeToggle(!isDark);
+
+  try {
+    localStorage.setItem("theme", nextTheme);
+  } catch (error) {
+    // 隐私模式下 localStorage 可能不可用，忽略即可。
+  }
 });
+
+syncThemeToggle(document.documentElement.dataset.theme === "dark");
 
 // 点击首页按钮时，让问候语在两句话之间切换。
 const helloButton = document.querySelector("#helloButton");

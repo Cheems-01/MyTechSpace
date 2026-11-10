@@ -5,7 +5,7 @@
   --surface: #ffffff;
   --surface-soft: #edf2f8;
   --ink: #182333;
-  --muted: #667386;
+  --muted: #5b6879;
   --line: #e1e7ef;
   --blue: #3768e8;
   --blue-dark: #2148b8;
@@ -77,6 +77,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--blue); outline-
 .button:hover { transform: translateY(-2px); }
 .button-primary { background: var(--blue); color: #fff; box-shadow: 0 9px 22px color-mix(in srgb, var(--blue) 24%, transparent); }
 .button-primary:hover { background: var(--blue-dark); }
+/* 深色模式下 --blue 变浅，白字只有 2.5:1，改用深色文字约 6.3:1。 */
+html[data-theme="dark"] .button-primary { color: #162337; }
 .button-secondary { border-color: var(--line); background: var(--surface); color: var(--ink); }
 .button-secondary span { color: var(--blue); }
 .greeting-message { min-height: 24px; margin: 10px 0 0; color: var(--blue); font-size: 13px; font-weight: 650; }
@@ -106,8 +108,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--blue); outline-
 .code-footer { display: flex; align-items: center; gap: 8px; padding: 12px 17px; border-top: 1px solid rgba(255, 255, 255, 0.08); color: #9eacc0; font-size: 10px; }
 .code-footer-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
 .float-chip { position: absolute; z-index: 2; display: grid; width: 56px; height: 56px; place-items: center; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); color: var(--blue); box-shadow: var(--shadow); font-size: 13px; font-weight: 800; }
-.chip-html { top: 35px; right: 6%; transform: rotate(8deg); }
-.chip-c { bottom: 28px; left: 3%; color: #e39548; transform: rotate(-9deg); }
+/* 徽章贴住窗口右缘、压在空白处：原来压住底栏文字和右上角菜单。 */
+.chip-html { top: 104px; right: -16px; transform: rotate(8deg); }
+.chip-c { right: -16px; bottom: 18px; left: auto; color: #e39548; transform: rotate(-9deg); }
 .visual-caption { position: absolute; right: 6%; bottom: -3px; display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 11px; }
 .caption-icon { color: #efb84d; }
 .hero-bottom { display: flex; align-items: center; gap: 14px; margin-top: 76px; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: 0.15em; }
@@ -304,8 +307,8 @@ html[data-theme="dark"] .art-car { background: #44372a; }
   .orbit-one { width: min(100%, 360px); height: 205px; }
   .orbit-two { width: min(100%, 375px); height: 230px; }
   .float-chip { width: 47px; height: 47px; border-radius: 14px; }
-  .chip-html { right: 1%; }
-  .chip-c { left: 0; }
+  .chip-html { top: 92px; right: -12px; }
+  .chip-c { right: -12px; left: auto; bottom: 14px; }
   .visual-caption { right: 0; bottom: -9px; }
   .hero-bottom { margin-top: 42px; }
   .section-heading { margin-bottom: 30px; }
@@ -318,7 +321,7 @@ html[data-theme="dark"] .art-car { background: #44372a; }
   .skills-grid { gap: 10px; }
   .skill-card { min-height: 235px; padding: 17px 14px; }
   .skill-card h3 { margin-top: 16px; font-size: 15px; }
-  .skill-card p { font-size: 10px; }
+  .skill-card p { font-size: 11px; }
   .skill-index { font-size: 8px; }
   .learning-layout { grid-template-columns: 1fr; gap: 38px; }
   .learning-intro { position: static; }

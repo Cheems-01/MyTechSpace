@@ -8,6 +8,24 @@
       content="MyTechSpace：记录 C 语言、嵌入式与网页开发学习过程的个人技术空间。"
     />
     <meta name="theme-color" content="#f5f7fb" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101824" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MyTechSpace · 我的技术空间" />
+    <meta property="og:description" content="记录 C 语言、嵌入式与网页开发学习过程的个人技术空间。" />
+    <meta property="og:url" content="https://cheems-01.github.io/MyTechSpace/" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23162337'/%3E%3Cpath d='M11 11l-4 5 4 5M21 11l4 5-4 5M18 9l-4 14' fill='none' stroke='%23c4f06d' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <script>
+      // 先于绘制决定主题，避免深色用户刷新时闪一下白色。
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (saved === "dark" || (!saved && prefersDark)) {
+            document.documentElement.dataset.theme = "dark";
+          }
+        } catch (error) {}
+      })();
+    </script>
     <title>MyTechSpace · 我的技术空间</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
@@ -256,7 +274,7 @@
                 <h3>MyTechSpace</h3>
                 <p>一个记录技术学习与项目实践的个人空间。当前初版包含技术栈、学习路线和项目展示。</p>
                 <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-                <a class="project-link" href="#home">正在浏览 <span aria-hidden="true">↗</span></a>
+                <a class="project-link" href="https://cheems-01.github.io/MyTechSpace/" target="_blank" rel="noopener">在线访问 <span aria-hidden="true">↗</span></a>
               </div>
             </article>
 
