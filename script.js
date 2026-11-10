@@ -101,11 +101,11 @@ filterButtons.forEach(function (button) {
 
 // 自动更新页脚年份。
 document.querySelector("#currentYear").textContent = new Date().getFullYear();
-
-
-/* 注册 Service Worker：只有 http(s) 下才有效，file:// 打开会被忽略。 */
-if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("sw.js").catch(function () {});
-  });
-}
+
+
+/* 注册 Service Worker：只有 http(s) 下才有效，file:// 打开会被忽略。 */
+if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  });
+}
